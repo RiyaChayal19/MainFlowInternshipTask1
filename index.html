@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">StartSmart</div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li class="dropdown">
+          <a href="#features">Features</a>
+          <ul class="dropdown-menu">
+            <li><a href="#career-roadmaps">Career Roadmaps</a></li>
+            <li><a href="#skill-learning">Skill-Based Learning</a></li>
+            <li><a href="#case-studies">Business Case Studies</a></li>
+            <li><a href="#success-stories">Success Stories</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#services">Services</a>
+          <ul class="dropdown-menu">
+            <li><a href="#workshops">Workshops & Webinars</a></li>
+            <li><a href="#mentorship">Mentorship Program</a></li>
+            <li><a href="#resume-help">Resume & LinkedIn Help</a></li>
+            <li><a href="#toolkit">Startup Toolkit</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Empowering the Next Generation of Entrepreneurs</h1>
+      <p>Learn, plan, and launch your business with confidence.</p>
+      <a href="#about-us" class="cta-button">Get Started</a>
+    </div>
+  </section>
+  
+  <section class="about-us" id="about-us">
+    <h2 align="center">About Us</h2>
+    <div class="about-container">
+      <div class="about-text hidden-left">
+        <p>
+          We are passionate about helping students explore and master the world of business.
+          Our mission is to provide practical insights, tools, and opportunities that empower 
+          future entrepreneurs and business leaders to thrive in their careers.
+        </p>
+        <p>
+          From career roadmaps to real-world case studies, everything we offer is designed 
+          to turn ideas into action and learning into growth.
+        </p>
+      </div>
+      <div class="about-image hidden-right">
+        <img src="images/aboutUs.jpg" alt="About Us Image" />
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <h2>Boost Your Business Career</h2>
+    <div class="feature-grid">
+      <div class="feature-item" id="career-roadmaps" onclick="highlightFeature(this)">
+        <img src="images\career2.jpg" alt="Career Roadmaps" class="feature-image">
+        <h3>Career Roadmaps</h3>
+        <p>Guided paths to explore marketing, finance, and entrepreneurship.</p>
+      </div>
+      <div class="feature-item" id="skill-learning" onclick="highlightFeature(this)">
+        <img src="images\skills2.jpg" alt="Skill-Based Learning" class="feature-image">
+        <h3>Skill-Based Learning</h3>
+        <p>Learn practical business skills like negotiation, leadership, and strategy.</p>
+      </div>
+      <div class="feature-item" id="case-studies" onclick="highlightFeature(this)">
+        <img src="images/bussiness.jpg" alt="Business Case Studies" class="feature-image">
+        <h3>Business Case Studies</h3>
+        <p>Explore real-world scenarios to learn how businesses succeed and fail.</p>
+      </div>
+      <div class="feature-item" id="success-stories" onclick="highlightFeature(this)">
+        <img src="images/susscess.jpg" alt="Success Stories" class="feature-image">
+        <h3>Success Stories</h3>
+        <p>Be inspired by students and entrepreneurs who've made an impact.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="feature-grid">
+      <div class="feature-item" id="workshops" onclick="highlightService(this)">
+        <img src="images/workshop.webp" alt="Workshops & Webinars" class="feature-image">
+        <h3>Workshops & Webinars</h3>
+        <p>Attend live events and recorded sessions with industry experts.</p>
+      </div>
+      
+      <div class="feature-item" id="mentorship" onclick="highlightService(this)">
+        <img src="images/mentor.jpg" alt="Mentorship Program" class="feature-image">
+        <h3>Mentorship Program</h3>
+        <p>Connect with mentors and get 1-on-1 guidance for your journey.</p>
+      </div>
+      <div class="feature-item" id="resume-help" onclick="highlightService(this)">
+        <img src="images/resume.png" alt="Resume & LinkedIn Help" class="feature-image">
+        <h3>Resume & LinkedIn Help</h3>
+        <p>Improve your professional presence with expert feedback.</p>
+      </div>
+      <div class="feature-item" id="toolkit" onclick="highlightService(this)">
+        <img src="images/startup.jpg" alt="Startup Toolkit" class="feature-image">
+        <h3>Startup Toolkit</h3>
+        <p>Get access to pitch deck templates, planning guides, and resources.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2025 MyBrand. All rights reserved.</p>
+    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.3,
+    });
+  
+    document.querySelectorAll('.hidden-left, .hidden-right').forEach((el) => observer.observe(el));
+ 
+
+  document.querySelectorAll('.dropdown > a').forEach((menuLink) => {
+    menuLink.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent link jump
+      const dropdown = this.nextElementSibling;
+      const isOpen = dropdown.style.display === 'block';
+     
+      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.style.display = 'none');
+   
+      dropdown.style.display = isOpen ? 'none' : 'block';
+    });
+  });
+
+ 
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.style.display = 'none');
+    }
+  });
+  function highlightFeature(element) {
+   
+    document.querySelectorAll('.feature-item').forEach((item) => {
+      item.classList.remove('highlighted');
+    });
+    
+   
+    element.classList.add('highlighted');
+  }
+  document.querySelectorAll('.feature-item').forEach(item => {
+    item.addEventListener('click', () => {    
+      document.querySelectorAll('.feature-item').forEach(el => el.classList.remove('highlighted'));
+      item.classList.add('highlighted');
+    });
+  });
+</script>
+  
+</body>
+</html>
